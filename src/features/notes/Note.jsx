@@ -3,8 +3,11 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useGetNotesQuery } from './notesApiSlice';
 import { memo } from 'react';
+import useTitle from 'hooks/useTitle';
 
 const Note = ({ noteId }) => {
+  useTitle('techNotes: Notes');
+
   const { note } = useGetNotesQuery('notesList', {
     selectFromResult: ({ data }) => ({
       note: data?.entities[noteId],
